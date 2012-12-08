@@ -1,4 +1,5 @@
 @import url('boilerplate.css');
+@import url('vars.scss');
 
 /************************************************************************/
 /* DEFAULTS																*/
@@ -8,7 +9,7 @@ body{
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, Sans-serif;
 	font-size: 12px;
 	line-height: 18px;
-	background: blue;
+	background: #ccc;
 	color: #333;
 }
 

@@ -31,7 +31,7 @@ grunt.initConfig({
         },
         reload: {
             files: [
-              'dev/*.html',
+              'dev/**/*.html',
               'dev/_ui/css/**/*.css',
               'dev/_ui/js/**/*.js',
               'dev/_ui/img/**/*'
