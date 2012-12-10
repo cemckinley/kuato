@@ -1,13 +1,21 @@
 /**
- *  NAME
+ *  MAIN CONTROLLER
  *
- *  @description description here
- *  @example
- *      var foo = new baz(param1, param2, param2);
+ *  @description main/sitewide controller
  *
  *  @author CM
- *  @version 0.0.0
  *  @requires
  *      - jQuery 1.8
- *      - Mustache.js
  */
+
+var NAMESPACE = {
+
+	init: function(){
+
+	}
+
+};
+
+$(function(){
+	NAMESPACE.init();
+});
