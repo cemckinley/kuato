@@ -8,7 +8,9 @@
  *      - jQuery 1.8
  */
 
-var NAMESPACE = {
+var NAMESPACE = NAMESPACE || {};
+
+NAMESPACE.main = {
 
 	init: function(){
 
@@ -17,5 +19,5 @@ var NAMESPACE = {
 };
 
 $(function(){
-	NAMESPACE.init();
+	NAMESPACE.main.init();
 });
