@@ -81,14 +81,16 @@ grunt.initConfig({
             src: 'dev/_ui/css',
             dest: 'temp/_ui/css',
             linecomments: true,
-            debugsass: true
+            debugsass: true,
+            relativeassets: true
         },
         dist: {
             src: 'dev/_ui/css',
             dest: 'dist/_ui/css',
             linecomments: false,
             outputstyle: 'compressed',
-            debugsass: false
+            debugsass: false,
+            relativeassets: true
         }
     },
 
