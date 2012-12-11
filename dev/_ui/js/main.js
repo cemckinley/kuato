@@ -1,3 +1,6 @@
+/*global Modernizr: true */
+/*global $: true */
+
 /**
  *  MAIN CONTROLLER
  *
