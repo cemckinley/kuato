@@ -1,0 +1,5 @@
+git clone https://github.com/cemckinley/grunt-build-scaffold.git
+cd grunt-build-scaffold
+npm install grunt-compass
+npm install grunt-contrib-watch --save-dev
+npm install grunt-contrib-copy
