@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# TODO: Check to see if Grunt is installed.
+# Install remotely via one-liner:
+# curl -L gvn.github.com/grunt-build-scaffold/install | bash
+
+# TODO: Check to see if Grunt is installed. Install it if necessary.
 
 echo "Project directory name:"
 read DIRECTORY_NAME
@@ -15,7 +18,9 @@ npm install grunt-compass
 npm install grunt-contrib-watch --save-dev
 npm install grunt-contrib-copy
 
-rm -rf .git # Remove old bindings since this is boilerplate
+rm -rf .git     # Remove old bindings since this is boilerplate
+
+echo $DIRECTORY_NAME > README.md
 
 if [ "$GIT_ON" == "y" ]; then
     git init
