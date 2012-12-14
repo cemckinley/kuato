@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install remotely via one-liner:
-# curl -L gvn.github.com/grunt-build-scaffold/install | bash
-
 # TODO: Check to see if Grunt is installed. Install it if necessary.
 
 echo "Project directory name:"

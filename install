@@ -3,10 +3,10 @@
 # install gbs
 
 # Install remotely via one-liner:
-# curl -L gvn.github.com/grunt-build-scaffold/install | bash
+# curl -L goo.gl/FHjrE | bash
 
 cd ~/bin
 curl gvn.github.com/grunt-build-scaffold/gbs > gbs
 chmod +x gbs
 
-echo -e "\n\nYou're all set, dude.\n\nJust run 'gbs' to create a new project.\n"
+echo -e "\n\nYou're all set, dude\0041\n\nJust run 'gbs' to create a new project\0041\n"
