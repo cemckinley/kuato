@@ -1,7 +1,12 @@
 #!/bin/bash
 
-echo "Directory Name:"
+# TODO: Check to see if Grunt is installed.
+
+echo "Project directory name:"
 read DIRECTORY_NAME
+
+echo "Do you want to initialize a new git repo? (y/n):"
+read GIT_ON
 
 git clone https://github.com/cemckinley/grunt-build-scaffold.git $DIRECTORY_NAME
 cd $DIRECTORY_NAME
@@ -9,3 +14,11 @@ cd $DIRECTORY_NAME
 npm install grunt-compass
 npm install grunt-contrib-watch --save-dev
 npm install grunt-contrib-copy
+
+rm -rf .git # Remove old bindings since this is boilerplate
+
+if [ "$GIT_ON" == "y" ]; then
+    git init
+else
+    rm .gitignore
+fi
