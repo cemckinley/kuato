@@ -1,3 +1,5 @@
+#!/bin/bash
+
 git clone https://github.com/cemckinley/grunt-build-scaffold.git
 cd grunt-build-scaffold
 npm install grunt-compass
