@@ -1,7 +1,11 @@
 #!/bin/bash
 
-git clone https://github.com/cemckinley/grunt-build-scaffold.git
-cd grunt-build-scaffold
+echo "Directory Name:"
+read DIRECTORY_NAME
+
+git clone https://github.com/cemckinley/grunt-build-scaffold.git $DIRECTORY_NAME
+cd $DIRECTORY_NAME
+
 npm install grunt-compass
 npm install grunt-contrib-watch --save-dev
 npm install grunt-contrib-copy
