@@ -16,7 +16,7 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 ## Command line usage
 
 - `curl -L cemckinley.github.com/grunt-build-scaffold/install | bash`  
- Installs the scaffold generator command 'gbs' and all dependencies
+ Installs the scaffold generator command 'gbs'
 - `gbs`  
  Create a new project
 - `grunt run`  
