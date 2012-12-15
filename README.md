@@ -1,5 +1,4 @@
-Grunt Build Scaffold
-=======================
+# KUATO
 
 Simple front-end file scaffold/starter site for a static web site, with grunt tasks for processing/building. The goal is to keep it lightweight for typical static site usage, but because everything is built on grunt.js, it's highly extensible/configurable.
 
