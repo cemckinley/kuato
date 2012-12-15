@@ -15,6 +15,10 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 
 ## Command line usage
 
+- `curl -L cemckinley.github.com/grunt-build-scaffold/install | bash`
+ Installs the scaffold generator command 'gbs' and all dependencies
+- `gbs`
+ Create a new project
 - `grunt run`:
  Lints and tests code, copies and processes code to a 'temp' folder, and starts a local static web server on port 8000. All web files will be watched for changes. Coming soon: a live reload feature.
 - `grunt build`:
@@ -24,14 +28,8 @@ Requires npm/grunt to be installed, along with the below node package dependenci
 
 
 ### Dependencies
-(installed node packages in project directory)
+(Auto-installed node packages in project directory. See install command.)
 
 - grunt-compass (https://npmjs.org/package/grunt-compass)
 - grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
 - grunt-contrib-copy (https://npmjs.org/package/grunt-contrib-copy)
-
-TBD: creating either a node package, grunt init template, or script file to neatly package the scaffold for easy install of pieces and dependencies.
-
-
-#### TODO:
-- Convert project to node package or grunt init template and auto install dependencies, for easy use
