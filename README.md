@@ -28,7 +28,7 @@ Requires npm/grunt to be installed, along with the below node package dependenci
 
 
 ### Dependencies
-(Auto-installed node packages in project directory. See install command.)
+(Auto-installed per project by 'gbs' command)
 
 - grunt-compass (https://npmjs.org/package/grunt-compass)
 - grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
