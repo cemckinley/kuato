@@ -24,7 +24,7 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 - `grunt build`  
  Lints and tests code, processes css, concatenates and minifies js, copies files to a 'dist' directory ready for deployment
 
-Requires npm/grunt to be installed, along with the below node package dependencies. See https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md for grunt.js setup instructions.
+Requires npm/grunt to be installed. See https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md for grunt.js setup instructions.
 
 
 ### Dependencies
