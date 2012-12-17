@@ -8,7 +8,7 @@ read DIRECTORY_NAME
 echo "Do you want to initialize a new git repo? (y/n):"
 read GIT_ON
 
-git clone https://github.com/cemckinley/grunt-build-scaffold.git $DIRECTORY_NAME
+git clone --depth=1 https://github.com/cemckinley/kuato.git $DIRECTORY_NAME
 cd $DIRECTORY_NAME
 
 npm install grunt-compass

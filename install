@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# install gbs
+# install kuato
 
 # Install remotely via one-liner:
-# curl -L cemckinley.github.com/grunt-build-scaffold/install | bash
+# curl -L cemckinley.github.com/kuato/install | bash
 
 cd ~/bin
-curl cemckinley.github.com/grunt-build-scaffold/gbs > gbs
-chmod +x gbs
+curl cemckinley.github.com/kuato/kuato > kuato
+chmod +x kuato
 
-echo -e "\n\nYou're all set, dude\0041\n\nJust run 'gbs' to create a new project\0041\n"
+echo -e "\n\nKUATO LIVES\0041\n\nJust run 'kuato' to create a new project\0041\n"
