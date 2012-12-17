@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO: Check to see if Grunt is installed. Install it if necessary.
+# TODO: Check to see if Grunt is installed. Install if necessary.
 
 echo "Project directory name:"
 read DIRECTORY_NAME
@@ -24,3 +24,5 @@ if [ "$GIT_ON" == "y" ]; then
 else
     rm .gitignore
 fi
+
+echo -e "\n\nSTART THE REACTOR\0041\n\nYour new project is ready\0041\n"
