@@ -29,7 +29,7 @@ Requires npm/grunt to be installed. See https://github.com/gruntjs/grunt/blob/ma
 
 
 ### Dependencies
-(Auto-installed per project by 'gbs' command)
+(Auto-installed per project by 'kuato' command)
 
 - grunt-compass (https://npmjs.org/package/grunt-compass)
 - grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
