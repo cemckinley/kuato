@@ -15,8 +15,8 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 ## Command line usage
 
 - `curl -L goo.gl/qWJG9 | bash`  
- Installs the scaffold generator command 'gbs'
-- `gbs`  
+ Installs kuato
+- `kuato`  
  Create a new project
 - `grunt run`  
  Lints and tests code, copies and processes code to a 'temp' folder, and starts a local static web server on port 8000. All web files will be watched for changes. Coming soon: a live reload feature.
