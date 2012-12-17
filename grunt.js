@@ -5,7 +5,6 @@
     - grunt-compass (https://npmjs.org/package/grunt-compass)
     - grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
     - grunt-contrib-copy (https://npmjs.org/package/grunt-contrib-copy)
-    - grunt-reload (https://npmjs.org/package/grunt-reload)
 */
 
 
