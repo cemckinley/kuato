@@ -11,11 +11,13 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 - Static server for previewing the site
 - Build command to nicely package files for deployment, combining and minifying javascript files
 
+## Installation
+
+Run the following command in your terminal:  
+`curl -L goo.gl/qWJG9 | bash`  
 
 ## Command line usage
 
-- `curl -L goo.gl/qWJG9 | bash`  
- Installs kuato
 - `kuato`  
  Create a new project
 - `grunt run`  
