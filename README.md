@@ -13,7 +13,7 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 
 ## Installation
 
-Requires node, npm and grunt to be installed first. See https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md for grunt.js setup instructions.
+Requires node, npm and grunt to be installed first. See https://github.com/gruntjs/grunt/wiki/Getting-started for grunt.js CLI install instructions.
 Once the above is installed, run the following command in your terminal:  
 `curl -L goo.gl/qWJG9 | bash`  
 
