@@ -14,7 +14,7 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 ## Installation
 
 Requires node, npm, grunt, and compass to be installed first.
-See https://github.com/gruntjs/grunt/wiki/Getting-started for grunt.js CLI install instructions and installing grunt locally.
+See https://github.com/gruntjs/grunt/tree/0.3-stable#installing-grunt.
 Once the above is installed, run the following command in your terminal:  
 `curl -L goo.gl/qWJG9 | bash`  
 
