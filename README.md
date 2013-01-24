@@ -13,14 +13,15 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 
 ## Installation
 
-Requires node, npm, grunt, and compass to be installed first.
-See https://github.com/gruntjs/grunt/tree/0.3-stable#installing-grunt.
-Once the above is installed, run the following command in your terminal:  
-`curl -L goo.gl/qWJG9 | bash`  
+Requires node, npm, and compass to be installed first. The kuato npm package will install the latest stable version of grunt globally for you.
+Once node, npm, and compass are installed, run the following command in your terminal:  
+`npm install -g kuato`  
 
 ## Command line usage
 
+`cd` to the directory where you want to create a new project folder.
 - `kuato`: Create a new grunt-based project scaffold
+`cd` into the new project directory (where the grunt file is) and:
 - `grunt run`: Lints and tests code, copies and processes code to a 'temp' folder, and starts a local static web server on port 8000. All web files will be watched for changes. Coming soon: a live reload feature.
 - `grunt build`: Lints and tests code, processes css, concatenates and minifies js, copies files to a 'dist' directory ready for deployment
 
