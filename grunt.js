@@ -12,14 +12,6 @@ module.exports = function(grunt) {
 
 // Project configuration.
 grunt.initConfig({
-    meta: {
-        version: '0.1.0',
-        banner: '/*! PROJECT_NAME - v<%= meta.version %> - ' +
-            '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-            '* http://PROJECT_WEBSITE/\n' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-            '  YOUR_NAME; Licensed MIT */'
-    },
     qunit: {
         files: ['test/**/*.html']
     },
@@ -35,7 +27,7 @@ grunt.initConfig({
               'dev/_ui/js/**/*.js',
               'dev/_ui/img/**/*'
             ],
-            tasks: 'copy:dev'
+            tasks: 'lint copy:dev'
         }
     },
     // reload server currently does not work, watch https://github.com/gruntjs/grunt-contrib-livereload for possible future plugin

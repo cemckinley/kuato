@@ -1,3 +1,4 @@
+/*global console: true */
 /*global Modernizr: true */
 /*global $: true */
 
@@ -8,7 +9,7 @@
  *  @example
  *      var myWidget = new NAMESPACE.Widget(param1, param2, param2);
  *
- *  @author CM
+ *  @author
  *  @version 0.0.0
  *  @requires
  *      - jQuery 1.8

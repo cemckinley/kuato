@@ -1,3 +1,4 @@
+/*global console: true */
 /*global Modernizr: true */
 /*global $: true */
 

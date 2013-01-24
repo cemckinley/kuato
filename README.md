@@ -13,7 +13,9 @@ Simple front-end file scaffold/starter site for a static web site, with grunt ta
 
 ## Installation
 
-Requires node, npm, and compass to be installed first. The kuato npm package will install the latest stable version of grunt globally for you.
+Requires node, npm, compass, and grunt to be installed first. Kuato is built based on the latest stable grunt 0.3.x release, which doesn't use the upcoming 0.4 grunt-cli package with local grunt install. Grunt is assumed to be installed globally, kuato does not create a local version of grunt in your project.
+
+
 Once node, npm, and compass are installed, run the following command in your terminal:  
 `npm install -g kuato`  
 
