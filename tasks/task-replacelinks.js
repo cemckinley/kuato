@@ -5,7 +5,8 @@
 module.exports = function(grunt) {
     var fs = require('fs');
     var path = require('path');
-    var linefeed = grunt.utils.linefeed;
+    var linefeed = grunt.util.linefeed;
+    var usemin = require('./task-usemin').init(grunt).usemin;
 
     /**
      * Register the 'replacelinks' task
@@ -16,7 +17,6 @@ module.exports = function(grunt) {
      * referencing a file into which they are all concatenated.
      */
     grunt.registerMultiTask('replacelinks', 'Replaces scripts / stylesheets in special HTML comment blocks', function() {
-
         var name = this.target;
         var data = this.data;
         var files = grunt.file.expand(data);
@@ -32,9 +32,7 @@ module.exports = function(grunt) {
             content = content.toString();
 
             // Replace and concatenate blocks of CSS/JS in HTML files
-            if (!!grunt.task._helpers['replacelinks:replaceblocks']) {
-                content = grunt.helper('replacelinks:replaceblocks', content);
-            }
+            content = replaceBlocks(content);
 
             // overwrite file with replaced blocks
             grunt.file.write(p, content);
@@ -46,7 +44,7 @@ module.exports = function(grunt) {
     /**
      * Process files with the blocks and compress the files within them.
      */
-    grunt.registerHelper('replacelinks:replaceblocks', function(content) {
+    function replaceBlocks(content) {
         var blocks = getBlocks(content);
 
         // Handle blocks
@@ -59,67 +57,66 @@ module.exports = function(grunt) {
             if (this.errorCount) { return false; }
 
             // Update the content to reference the concatenated and versioned files
-            content = grunt.helper('usemin', type, content, block, dest);
+            content = usemin(type, content, block, dest);
         });
 
         return content;
-    });
+    }
+
+    function getBlocks(body) {
+        // Start build pattern
+        // <!-- build:[type] destination -->
+        // TODO: use better regex for dest match
+        var regexBuildStart = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
+        // End build pattern
+        // <!-- endbuild -->
+        var regexBuildEnd = /<!--\s*endbuild\s*-->/;
+        var regexComment = /<!--(.*)-->/;
+        // Match single or double quotes
+        var regexSrc = /src=['"]([^"']+)["']/;
+        var regexHref = /href=['"]([^"']+)["']/;
+
+        var lines = body.replace(/\r\n/g, '\n').split(/\n/);
+        var isBlock = false;
+        var sections = [];
+        var src;
+        var raw;
+        var i = 0;
+
+        lines.forEach(function(line) {
+            var buildParams = line.match(regexBuildStart);
+            var isBuild = regexBuildStart.test(line);
+            var isBuildEnd = regexBuildEnd.test(line);
+            var isComment = regexComment.test(line);
+
+            if (isBuild) {
+                isBlock = true;
+                sections[i] = {};
+                sections[i].type = buildParams[1].trim();
+                sections[i].dest = buildParams[2].trim();
+                sections[i].src = src = [];
+                sections[i].raw = raw = [];
+                i++;
+            }
+
+            if (isBlock && raw && src) {
+                raw.push(line);
+
+                if (!isComment) {
+                    if (regexSrc.test(line)) {
+                        src.push(line.match(regexSrc)[1]);
+                    }
+                    if (regexHref.test(line)) {
+                        src.push(line.match(regexHref)[1]);
+                    }
+                }
+
+                if (isBuildEnd) {
+                    isBlock = false;
+                }
+            }
+        });
+
+        return sections;
+    }
 };
-
-
-function getBlocks(body) {
-    // Start build pattern
-    // <!-- build:[type] destination -->
-    // TODO: use better regex for dest match
-    var regexBuildStart = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
-    // End build pattern
-    // <!-- endbuild -->
-    var regexBuildEnd = /<!--\s*endbuild\s*-->/;
-    var regexComment = /<!--(.*)-->/;
-    // Match single or double quotes
-    var regexSrc = /src=['"]([^"']+)["']/;
-    var regexHref = /href=['"]([^"']+)["']/;
-
-    var lines = body.replace(/\r\n/g, '\n').split(/\n/);
-    var isBlock = false;
-    var sections = [];
-    var src;
-    var raw;
-    var i = 0;
-
-    lines.forEach(function(line) {
-        var buildParams = line.match(regexBuildStart);
-        var isBuild = regexBuildStart.test(line);
-        var isBuildEnd = regexBuildEnd.test(line);
-        var isComment = regexComment.test(line);
-
-        if (isBuild) {
-            isBlock = true;
-            sections[i] = {};
-            sections[i].type = buildParams[1].trim();
-            sections[i].dest = buildParams[2].trim();
-            sections[i].src = src = [];
-            sections[i].raw = raw = [];
-            i++;
-        }
-
-        if (isBlock && raw && src) {
-            raw.push(line);
-
-            if (!isComment) {
-                if (regexSrc.test(line)) {
-                    src.push(line.match(regexSrc)[1]);
-                }
-                if (regexHref.test(line)) {
-                    src.push(line.match(regexHref)[1]);
-                }
-            }
-
-            if (isBuildEnd) {
-                isBlock = false;
-            }
-        }
-    });
-
-    return sections;
-}

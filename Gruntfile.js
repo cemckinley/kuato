@@ -1,10 +1,15 @@
 /*global module:false*/
 
-/*** GRUNT 3rd PARTY PLUGINS: DEPENDENCIES: ***/
+/*** GRUNT PLUGINS: DEPENDENCIES: ***/
 /*
     - grunt-compass (https://npmjs.org/package/grunt-compass)
-    - grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
-    - grunt-contrib-copy (https://npmjs.org/package/grunt-contrib-copy)
+    - grunt-contrib-concat
+    - grunt-contrib-uglify
+    - grunt-contrib-jshint
+    - grunt-contrib-qunit
+    - grunt-contrib-connect
+    - grunt-contrib-watch
+    - grunt-contrib-copy
 */
 
 
@@ -27,7 +32,7 @@ grunt.initConfig({
               'dev/_ui/js/**/*.js',
               'dev/_ui/img/**/*'
             ],
-            tasks: 'lint copy:dev'
+            tasks: 'jshint copy:dev'
         }
     },
     // reload server currently does not work, watch https://github.com/gruntjs/grunt-contrib-livereload for possible future plugin
@@ -38,18 +43,13 @@ grunt.initConfig({
             port: 8000 // should match server.port config
         }
     },
-    server: {
-        port: 8000,
-        base: 'temp/'
-    },
-    lint: {
-        files: grunt.file.expandFiles([
-            'grunt.js',
-            'dev/_ui/js/**/*.js',
-            'test/**/*.js'
-        ]).filter(function(f){ // filter out 3rd party js in the js/lib folder, since lint quality can't be controlled
-            return !/dev\/_ui\/js\/lib\//.test(f);
-        })
+    connect: {
+        dev: {
+            options: {
+                port: 8000,
+                base: 'temp/'
+            }
+        }
     },
     jshint: {
         options: {
@@ -65,6 +65,13 @@ grunt.initConfig({
             eqnull: true,
             browser: true
         },
+        files: grunt.file.expand([
+            'grunt.js',
+            'dev/_ui/js/**/*.js',
+            'test/**/*.js',
+            '!test/qunit.js',
+            '!dev/_ui/js/lib/**/*' // leave out 3rd party js in lib folder, since can't guarantee lint quality
+        ]),
         globals: {}
     },
     compass: {
@@ -88,23 +95,32 @@ grunt.initConfig({
     // build config
     copy: {
         dev: {
-            files: {
-                'temp/': grunt.file.expandFiles([
-                    'dev/**'
-                ]).filter(function(f){// copy over everything except scss, which will be processed/copied with compass
-                    return !/.+(\.scss)$/gm.test(f);
-                })
-            }
+            files: [
+                {
+                    expand: true,
+                    src: [
+                        '**',
+                        '!**/*.scss' // copy over everything except scss, which will be processed/copied with compass
+                    ],
+                    dest: 'temp/',
+                    cwd: 'dev/'
+                }
+            ]
         },
         dist: {
-            files: {
-                // TODO: switch to grunt.file.expand in grunt v0.4.0a, which will support exclusions in minimatch
-                'dist/': grunt.file.expandFiles([
-                    'dev/**'
-                ]).filter(function(f){// copy over everything except css and js, which will be processed/copied with compass and concat/min functions
-                    return !/dev\/_ui\/css|dev\/_ui\/js/.test(f);
-                })
-            }
+            files: [
+                {
+                    expand: true,
+                    src: [
+                        '**',
+                        '!_ui/css/**', // copy over everything except css and js, which will be processed/copied with compass and concat/min functions
+                        '!_ui/js/**'
+                    ],
+                    dest: 'dist/',
+                    cwd: 'dev/'
+
+                }
+            ]
         }
     },
     concat: {
@@ -113,10 +129,10 @@ grunt.initConfig({
             dest: 'dist/_ui/js/scripts.js'
         }
     },
-    min: {
+    uglify: {
         dist: {
-            src: ['dist/_ui/js/scripts.js'],
-            dest: 'dist/_ui/js/scripts.min.js'
+            dest: 'dist/_ui/js/scripts.min.js',
+            src: ['dist/_ui/js/scripts.js']
         }
     },
     // replace js and css link build blocks within specified files with their concatenated versions
@@ -129,6 +145,11 @@ grunt.initConfig({
 
 // grunt 3rd party plugins
 grunt.loadNpmTasks('grunt-contrib-copy');
+grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-connect');
+grunt.loadNpmTasks('grunt-contrib-jshint');
+grunt.loadNpmTasks('grunt-contrib-qunit');
+grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-compass');
 
@@ -136,7 +157,7 @@ grunt.loadNpmTasks('grunt-compass');
 grunt.loadTasks('tasks/');
 
 // Default task.
-grunt.registerTask('run', 'lint qunit copy:dev compass:dev server watch');
-grunt.registerTask('build', 'lint qunit copy:dist compass:dist concat min replacelinks');
+grunt.registerTask('run', ['jshint', 'qunit', 'copy:dev', 'compass:dev', 'connect', 'watch']);
+grunt.registerTask('build', ['jshint', 'qunit', 'copy:dist', 'compass:dist', 'concat', 'uglify', 'replacelinks']);
 
 };

@@ -1,9 +1,16 @@
-module.exports = function(grunt) {
+/**
+ * usemin grunt task
+ */
+
+exports.init = function(grunt) {
+
+    var exports = {};
+
     /**
      * usemin and usemin:* are used to replace the blocks in HTML
      */
-    grunt.registerHelper('usemin', function(type, content, block, dest) {
-        var indent = (block.split(grunt.utils.linefeed)[0].match(/^\s*/) || [])[0];
+    exports.usemin = function(type, content, block, dest) {
+        var indent = (block.split(grunt.util.linefeed)[0].match(/^\s*/) || [])[0];
         if (type === 'css') {
             return content.replace(block, indent + '<link rel="stylesheet" href="' + dest + '">');
         }
@@ -11,5 +18,7 @@ module.exports = function(grunt) {
             return content.replace(block, indent + '<script src="' + dest + '"></script>');
         }
         return false;
-    });
+    };
+
+    return exports;
 };
