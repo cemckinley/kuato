@@ -32,5 +32,10 @@ Once node, npm, compass, and grunt-cli are installed, run the following command 
 (Auto-installed per project by 'kuato' command)
 
 - grunt-compass (https://npmjs.org/package/grunt-compass)
-- grunt-contrib-watch (https://github.com/gruntjs/grunt-contrib-watch)
-- grunt-contrib-copy (https://npmjs.org/package/grunt-contrib-copy)
+- grunt-contrib-concat
+- grunt-contrib-uglify
+- grunt-contrib-jshint
+- grunt-contrib-qunit
+- grunt-contrib-connect
+- grunt-contrib-watch
+- grunt-contrib-copy
