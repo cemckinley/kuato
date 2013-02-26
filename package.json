@@ -1,0 +1,17 @@
+{
+  "name": "my-grunt-project",
+  "version": "1.0.0",
+  "description": "Project based on grunt.js",
+  "main": "GruntFile.js",
+  "dependencies": {
+    "grunt": "~0.4.0"
+  },
+  "devDependencies": {
+  },
+  "repository": {
+  },
+  "author": "",
+  "license": "",
+  "private": true,
+  "readmeFilename": "readme.md"
+}
