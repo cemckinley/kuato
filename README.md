@@ -25,8 +25,9 @@ Once node, npm, compass, and grunt-cli are installed, run the following command 
 - `kuato`: Create a new grunt-based project scaffold
 
 `cd` into the new project directory (where the grunt file is) and:
-- `grunt run`: Lints and tests code, copies and processes code to a 'temp' folder, and starts a local static web server on port 8000. All web files will be watched for changes. Coming soon: a live reload feature.
+- `grunt run`: Lints and tests code, copies and processes code to a 'temp' folder, and starts a local static web server with live reloading on port 8001. All web files will be watched for changes, copied to 'temp' on change, and any pages connected to the server will reload automatically.
 - `grunt build`: Lints and tests code, processes css, concatenates and minifies js, copies files to a 'dist' directory ready for deployment
+- `grunt test`: Lints and tests code.
 
 ### Grunt Task Dependencies
 (Auto-installed per project by 'kuato' command)

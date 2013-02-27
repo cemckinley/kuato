@@ -17,7 +17,7 @@ var NAMESPACE = NAMESPACE || {};
 NAMESPACE.main = {
 
 	init: function(){
-
+		
 	}
 
 };
