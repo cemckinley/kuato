@@ -38,5 +38,6 @@ Once node, npm, compass, and grunt-cli are installed, run the following command 
 - grunt-contrib-jshint
 - grunt-contrib-qunit
 - grunt-contrib-connect
-- grunt-contrib-watch
+- grunt-contrib-livereload
+- grunt-contrib-regarde
 - grunt-contrib-copy
