@@ -2,7 +2,7 @@
 
 /*** GRUNT PLUGINS: DEPENDENCIES: ***/
 /*
-    - grunt-compass (https://npmjs.org/package/grunt-compass)
+    - grunt-contrib-compass (https://github.com/gruntjs/grunt-contrib-compass)
     - grunt-contrib-concat
     - grunt-contrib-uglify
     - grunt-contrib-jshint
@@ -86,19 +86,18 @@ grunt.initConfig({
     },
     compass: {
         dev: {
-            src: 'dev/_ui/css',
-            dest: 'temp/_ui/css',
-            linecomments: true,
-            debugsass: true,
-            relativeassets: true
+            options: {
+                cssDir: 'temp/_ui/css',
+                sassDir: 'dev/_ui/css',
+                environment: 'development'
+            }
         },
         dist: {
-            src: 'dev/_ui/css',
-            dest: 'dist/_ui/css',
-            linecomments: false,
-            outputstyle: 'compressed',
-            debugsass: false,
-            relativeassets: true
+            options: {
+                cssDir: 'dist/_ui/css',
+                sassDir: 'dev/_ui/css',
+                environment: 'production'
+            }
         }
     },
 
@@ -186,7 +185,7 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-qunit');
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-regarde');
-grunt.loadNpmTasks('grunt-compass');
+grunt.loadNpmTasks('grunt-contrib-compass');
 
 // custom/ported tasks
 grunt.loadTasks('tasks/');

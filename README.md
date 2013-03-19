@@ -32,7 +32,7 @@ Once node, npm, compass, and grunt-cli are installed, run the following command 
 ### Grunt Task Dependencies
 (Auto-installed per project by 'kuato' command)
 
-- grunt-compass (https://npmjs.org/package/grunt-compass)
+- grunt-contrib-compass
 - grunt-contrib-concat
 - grunt-contrib-uglify
 - grunt-contrib-jshint
